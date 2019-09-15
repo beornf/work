@@ -120,7 +120,7 @@ func (w *worker) loop() {
 			job, err := w.fetchJob()
 			if err != nil {
 				logError("worker.fetch", err)
-				timer.Reset(10 * time.Millisecond)
+				timer.Reset(100 * time.Millisecond)
 			} else if job != nil {
 				w.processJob(job)
 				consequtiveNoJobs = 0

@@ -1,7 +1,12 @@
 package work
 
-import "fmt"
+import (
+	"fmt"
+	"net"
+)
 
 func logError(key string, err error) {
-	fmt.Printf("ERROR: %s - %s\n", key, err.Error())
+	if _, ok := err.(*net.OpError); !ok {
+		fmt.Printf("ERROR: %s - %s\n", key, err.Error())
+	}
 }
